@@ -1,0 +1,14 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(153, 153, 228);
+  border: 1px solid blue;
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+}
+
+.infoText {
+  color: white;
+}

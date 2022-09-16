@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-left: 200px;
+  align-items: center;
+}
+
+.characterGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  column-gap: 10px;
+  row-gap: 10px;
+  padding: 20px;
+  margin-bottom: 60px;
+}
+
+.testText {
+  font-size: 100;
+}
+
+@media (min-width: 320px) {
+  .videoGrid {
+    grid-template-columns: 200px;
+  }
+}
+@media (min-width: 481px) {
+  .videoGrid {
+    grid-template-columns: repeat(2, 200px);
+  }
+}
+@media (min-width: 641px) {
+  .videoGrid {
+    grid-template-columns: repeat(3, 200px);
+  }
+}
+@media (min-width: 961px) {
+  .videoGrid {
+    grid-template-columns: repeat(4, 200px);
+  }
+}
+@media (min-width: 1025px) {
+  .videoGrid {
+    grid-template-columns: repeat(4, 200px);
+  }
+}
+@media (min-width: 1281px) {
+  .videoGrid {
+    grid-template-columns: repeat(4, 200px);
+  }
+}
