@@ -16,3 +16,34 @@
 .testText {
   font-size: 100;
 }
+
+@media (min-width: 320px) {
+  .videoGrid {
+    grid-template-columns: 200px;
+  }
+}
+@media (min-width: 481px) {
+  .videoGrid {
+    grid-template-columns: repeat(2, 200px);
+  }
+}
+@media (min-width: 641px) {
+  .videoGrid {
+    grid-template-columns: repeat(3, 200px);
+  }
+}
+@media (min-width: 961px) {
+  .videoGrid {
+    grid-template-columns: repeat(4, 200px);
+  }
+}
+@media (min-width: 1025px) {
+  .videoGrid {
+    grid-template-columns: repeat(5, 200px);
+  }
+}
+@media (min-width: 1281px) {
+  .videoGrid {
+    grid-template-columns: repeat(6, 200px);
+  }
+}
