@@ -4,7 +4,7 @@ import RickAndMortyLogo from "../assets/rick-morty-logo.png";
 
 import styles from "../styles/Navbar.module.scss";
 
-function Navbar() {
+const Navbar = () => {
   return (
     <div className={styles.navbarContainer}>
       <Link href="/">
@@ -20,6 +20,6 @@ function Navbar() {
       </Link>
     </div>
   );
-}
+};
 
 export default Navbar;

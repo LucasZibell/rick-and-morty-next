@@ -5,6 +5,12 @@ type Info = {
   prev: string;
 };
 
+export type CharacterFilter = {
+  name: string;
+  status: string;
+  gender: string;
+};
+
 export type Character = {
   id: number;
   name: string;
