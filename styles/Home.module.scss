@@ -2,11 +2,15 @@
   display: flex;
   flex-direction: row;
   padding-top: 50px;
+  padding-left: 200px;
 }
 
 .videoGrid {
   display: grid;
-  grid-template-columns: repeat(100px, 5);
+  grid-template-columns: repeat(5, 200px);
+  column-gap: 10px;
+  row-gap: 10px;
+  padding: 20px;
 }
 
 .testText {

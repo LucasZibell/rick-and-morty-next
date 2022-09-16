@@ -3,8 +3,8 @@ import styles from "../styles/Sidebar.module.scss";
 function Sidebar() {
   return (
     <div className={styles.sidebarContainer}>
-      <span>Filter</span>
-      <select>
+      <input placeholder="Name" className={styles.filterInput} />
+      <select className={styles.filterInput}>
         <option value="" selected>
           All
         </option>
@@ -12,7 +12,7 @@ function Sidebar() {
         <option value="dead">Dead</option>
         <option value="unknown">Unknown</option>
       </select>
-      <select>
+      <select className={styles.filterInput}>
         <option value="" selected>
           All
         </option>
@@ -21,7 +21,6 @@ function Sidebar() {
         <option value="genderless">Genderless</option>
         <option value="unknown">Unknown</option>
       </select>
-      Como esta la banda
     </div>
   );
 }
