@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 50px;
+}
+
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(100px, 5);
+}
+
+.testText {
+  font-size: 100;
+}
