@@ -20,7 +20,11 @@ const CharacterCard = ({ character }: Props) => {
       <span className={styles.infoText}>{name}</span>
       <span className={styles.infoText}>{species}</span>
       <span className={styles.infoText}>{status}</span>
-      <button type="button" onClick={handleClick}>
+      <button
+        className={styles.detailCardButton}
+        type="button"
+        onClick={handleClick}
+      >
         Details
       </button>
     </div>
