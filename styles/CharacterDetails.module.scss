@@ -6,6 +6,7 @@
 }
 
 .detailsGrid {
+  margin-bottom: 40px;
   display: grid;
   grid-template-columns: 200px 400px;
   column-gap: 20px;
@@ -21,6 +22,31 @@
 }
 
 .episodesContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 620px;
+  width: 100%;
+}
+
+.episodeList {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-bottom: 15px;
+  overflow-y: scroll;
+}
+
+.episode {
+  min-width: 90px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-align: start;
+}
+
+.selected {
+  color: green;
 }
 
 .characterImage {
@@ -64,4 +90,30 @@
 .created {
   @extend .text;
   grid-area: created;
+}
+
+@media (min-width: 481px) {
+  .detailsGrid {
+    grid-template-areas:
+      "image image"
+      "image image"
+      "image image"
+      "name type"
+      "status gender"
+      "species origin"
+      "created created";
+  }
+}
+
+@media (min-width: 961px) {
+  .detailsGrid {
+    grid-template-areas:
+      "image name"
+      "image status"
+      "image species"
+      "image type"
+      "image gender"
+      "image origin"
+      "image created";
+  }
 }
