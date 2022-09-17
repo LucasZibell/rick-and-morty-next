@@ -5,6 +5,11 @@ type Info = {
   prev: string;
 };
 
+type Origin = {
+  name: string;
+  url: string;
+};
+
 export type CharacterFilter = {
   name: string;
   status: string;
@@ -19,6 +24,9 @@ export type Character = {
   type: string;
   gender: string;
   image: string;
+  episode: Array<string>;
+  origin: Origin;
+  created: string;
 };
 
 export type CharacterResponse = {

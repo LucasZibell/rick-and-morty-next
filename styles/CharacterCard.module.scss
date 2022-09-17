@@ -10,5 +10,16 @@
 }
 
 .infoText {
+  font-size: 16px;
   color: white;
+}
+
+.detailCardButton {
+  background-color: rgb(33, 33, 180);
+  border: 1px solid blue;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 2px #888888;
 }

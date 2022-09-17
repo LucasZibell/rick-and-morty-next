@@ -1,18 +1,66 @@
 import styles from "../styles/Paginator.module.scss";
 
 type Props = {
+  onChangePage: (page: number) => void;
   currentPage: number;
-  totalPages: number | undefined;
+  totalPages: number;
 };
 
-const Paginator = ({ currentPage, totalPages }: Props) => {
+const Paginator = ({ onChangePage, currentPage, totalPages }: Props) => {
+  const prevPage = () => {
+    if (currentPage <= 1) return;
+    onChangePage(currentPage - 1);
+  };
+
+  const nextPage = () => {
+    if (currentPage >= totalPages) return;
+    onChangePage(currentPage + 1);
+  };
+
+  // const selectPage = (e) => {
+  //   const pageNumber = Number(e.target.value);
+  //   if (!pageNumber || pageNumber < 1 || pageNumber > totalPages)
+  //     setTypedPage(currentPage);
+  //   else setTypedPage(pageNumber);
+  // };
+
+  const goToFirstPage = () => onChangePage(1);
+
+  const goToLastPage = () => onChangePage(totalPages);
+
   return (
     <div className={styles.containerPaginator}>
-      <button type="button">{"<"}</button>
-      <span className={styles.pages}>{1}</span>
-      <input className={styles.pageInput} type="number" value={currentPage} />
-      <span className={styles.pages}>{totalPages}</span>
-      <button type="button">{">"}</button>
+      <button
+        className={styles.paginatorButton}
+        type="button"
+        onClick={prevPage}
+        disabled={currentPage === 1}
+      >
+        {"<"}
+      </button>
+      <button
+        type="button"
+        className={styles.paginatorButton}
+        onClick={goToFirstPage}
+      >
+        {1}
+      </button>
+      <span className={styles.pageInput}>{currentPage}</span>
+      <button
+        type="button"
+        className={styles.paginatorButton}
+        onClick={goToLastPage}
+      >
+        {totalPages}
+      </button>
+      <button
+        className={styles.paginatorButton}
+        type="button"
+        onClick={nextPage}
+        disabled={currentPage === totalPages}
+      >
+        {">"}
+      </button>
     </div>
   );
 };

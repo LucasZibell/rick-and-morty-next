@@ -1,9 +1,15 @@
-import { QueryFunction } from "@tanstack/react-query";
-import { CharacterResponse, CharacterFilter } from "../types/character";
+import {
+  CharacterResponse,
+  CharacterFilter,
+  Character,
+} from "../types/character";
 
 import api from "./api";
 
-export const getCharacters = ({ queryKey }: any) => {
-  const [_, params] = queryKey;
+export const getCharacters = (filters: CharacterFilter, page: number) => {
+  const params = { ...filters, page };
   return api.get<CharacterResponse>("/character", { params });
 };
+
+export const getCharacterDetails = (id: string) =>
+  api.get<Character>(`/character/${id}`);

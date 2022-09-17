@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Sidebar from "../components/Sidebar";
 import CharacterCard from "../components/CharacterCard";
 import Paginator from "../components/Paginator";
+import Loader from "../components/Loader";
 
 import GET_CHARACTERS from "../constants/queries";
 
@@ -21,7 +22,12 @@ const defaultFilter = {
 
 const CharacterList: NextPage = () => {
   const [filters, setFilters] = useState<CharacterFilter>(defaultFilter);
-  const { data } = useQuery([GET_CHARACTERS, filters], getCharacters);
+  const [currentPage, setPage] = useState<number>(1);
+  const { data, isLoading } = useQuery(
+    [GET_CHARACTERS, filters, currentPage],
+    () => getCharacters(filters, currentPage),
+    { keepPreviousData: true }
+  );
 
   const hadleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { id, value } = event.target;
@@ -30,6 +36,10 @@ const CharacterList: NextPage = () => {
 
   const hadleNameChange = (name: string) =>
     setFilters(() => ({ ...filters, name: name }));
+
+  const handlePageChange = (newPage: number) => setPage(newPage);
+
+  if (isLoading || !data) return <Loader />;
 
   return (
     <>
@@ -43,7 +53,11 @@ const CharacterList: NextPage = () => {
             <CharacterCard key={character.id} character={character} />
           ))}
         </div>
-        <Paginator currentPage={1} totalPages={data?.data.info.pages} />
+        <Paginator
+          onChangePage={handlePageChange}
+          currentPage={currentPage}
+          totalPages={data?.data.info.pages || 1}
+        />
       </div>
     </>
   );
