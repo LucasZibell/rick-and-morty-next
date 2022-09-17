@@ -9,6 +9,7 @@ import { getCharacterDetails } from "../../services/characters";
 
 import styles from "../../styles/CharacterDetails.module.scss";
 import Loader from "../../components/Loader";
+import ErrorMessage from "../../components/ErrorMessage";
 
 const defaultCharacter = {
   image: "",
@@ -29,7 +30,7 @@ const Details: NextPage = () => {
 
   if (isLoading || isRefetching) return <Loader />;
 
-  if (!data) return <span>Error</span>;
+  if (!data) return <ErrorMessage />;
 
   const { image, name, status, species, type, gender, origin, created } =
     data.data;

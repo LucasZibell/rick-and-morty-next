@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import CharacterCard from "../components/CharacterCard";
 import Paginator from "../components/Paginator";
 import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
 
 import GET_CHARACTERS from "../constants/queries";
 
@@ -39,7 +40,9 @@ const CharacterList: NextPage = () => {
 
   const handlePageChange = (newPage: number) => setPage(newPage);
 
-  if (isLoading || !data) return <Loader />;
+  if (isLoading) return <Loader />;
+
+  if (!data) return <ErrorMessage />;
 
   return (
     <>
