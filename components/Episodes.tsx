@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
+import ErrorMessage from "./ErrorMessage";
+
 import { GET_EPISODE_DETAILS } from "../constants/queries";
 
 import { getEpisodeDetails } from "../services/episodes";
@@ -8,7 +10,7 @@ import { getEpisodeDetails } from "../services/episodes";
 import styles from "../styles/CharacterDetails.module.scss";
 
 type Props = {
-  episodes: Array<string>;
+  episodes: Array<string | undefined>;
 };
 
 const Episodes = ({ episodes }: Props) => {
@@ -29,7 +31,7 @@ const Episodes = ({ episodes }: Props) => {
 
   const handleEpisodeSelect = (ep: string) => setSelectedEpisode(ep);
 
-  const createdDate = new Date(data?.data.created).toDateString();
+  const createdDate = new Date(data?.data.created || "").toDateString();
 
   return (
     <div className={styles.episodesContainer}>
@@ -46,7 +48,7 @@ const Episodes = ({ episodes }: Props) => {
         ))}
       </div>
       <div className={styles.episodesContainer}>
-        {selectedEpisode ? (
+        {selectedEpisode && (
           <>
             <span>{data?.data.name}</span>
             <span>{data?.data.id}</span>
@@ -54,8 +56,6 @@ const Episodes = ({ episodes }: Props) => {
             <span>{createdDate}</span>
             <span>{data?.data.episode}</span>
           </>
-        ) : (
-          <span>No response</span>
         )}
       </div>
     </div>
