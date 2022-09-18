@@ -11,5 +11,5 @@ export const getCharacters = (filters: CharacterFilter, page: number) => {
   return api.get<CharacterResponse>("/character", { params });
 };
 
-export const getCharacterDetails = (id: any) =>
+export const getCharacterDetails = (id: string | Array<string> | undefined) =>
   api.get<Character>(`/character/${id}`);
