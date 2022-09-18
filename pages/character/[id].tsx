@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
+import format from "date-fns/format";
 
 import { GET_CHARACTER_DETAILS } from "../../constants/queries";
 
@@ -45,7 +46,7 @@ const Details: NextPage = () => {
     episode,
   } = data;
 
-  const createdTime = new Date(created).toDateString();
+  const createdTime = format(new Date(created || ""), "MM/dd/yyyy");
 
   return (
     <div className={styles.detailsContainer}>

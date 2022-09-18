@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-
-import ErrorMessage from "./ErrorMessage";
+import format from "date-fns/format";
 
 import { GET_EPISODE_DETAILS } from "../constants/queries";
 
@@ -16,7 +15,7 @@ type Props = {
 const Episodes = ({ episodes }: Props) => {
   const [selectedEpisode, setSelectedEpisode] = useState<string>("");
 
-  const { data, isLoading } = useQuery(
+  const { data } = useQuery(
     [GET_EPISODE_DETAILS, selectedEpisode],
     () => getEpisodeDetails(selectedEpisode),
     {
@@ -31,7 +30,10 @@ const Episodes = ({ episodes }: Props) => {
 
   const handleEpisodeSelect = (ep: string) => setSelectedEpisode(ep);
 
-  const createdDate = new Date(data?.data.created || "").toDateString();
+  const createdDate = format(
+    new Date(data?.data.created || Date()),
+    "MM/dd/yyyy"
+  );
 
   return (
     <div className={styles.episodesContainer}>
@@ -47,14 +49,14 @@ const Episodes = ({ episodes }: Props) => {
           >{`Episode ${ep}`}</button>
         ))}
       </div>
-      <div className={styles.episodesContainer}>
+      <div className={styles.episodesDetailsContainer}>
         {selectedEpisode && (
           <>
-            <span>{data?.data.name}</span>
-            <span>{data?.data.id}</span>
-            <span>{data?.data.air_date}</span>
-            <span>{createdDate}</span>
-            <span>{data?.data.episode}</span>
+            <span className={styles.episodeInfo}>{data?.data.name}</span>
+            <span className={styles.episodeInfo}>{data?.data.id}</span>
+            <span className={styles.episodeInfo}>{data?.data.air_date}</span>
+            <span className={styles.episodeInfo}>{createdDate}</span>
+            <span className={styles.episodeInfo}>{data?.data.episode}</span>
           </>
         )}
       </div>

@@ -40,6 +40,8 @@ const CharacterList: NextPage = () => {
 
   const handlePageChange = (newPage: number) => setPage(newPage);
 
+  const goTop = () => window.scrollTo(0, 0);
+
   if (isLoading) return <Loader />;
 
   if (!data) return <ErrorMessage />;
@@ -61,6 +63,9 @@ const CharacterList: NextPage = () => {
           currentPage={currentPage}
           totalPages={data?.data.info.pages || 1}
         />
+        <button onClick={goTop} className={styles.goTopButton} type="button">
+          Go
+        </button>
       </div>
     </>
   );
