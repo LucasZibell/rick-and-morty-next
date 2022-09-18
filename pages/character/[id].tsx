@@ -2,39 +2,51 @@ import Image from "next/image";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
+import format from "date-fns/format";
 
-import GET_CHARACTER_DETAILS from "../../constants/queries";
+import { GET_CHARACTER_DETAILS } from "../../constants/queries";
 
 import { getCharacterDetails } from "../../services/characters";
 
 import styles from "../../styles/CharacterDetails.module.scss";
+import Episodes from "../../components/Episodes";
 import Loader from "../../components/Loader";
-
-const defaultCharacter = {
-  image: "",
-  name: "",
-};
+import ErrorMessage from "../../components/ErrorMessage";
 
 const Details: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, isLoading, isRefetching, isError } = useQuery(
-    [GET_CHARACTER_DETAILS],
+  const { data, isLoading } = useQuery(
+    [GET_CHARACTER_DETAILS, id],
     () => getCharacterDetails(id),
     {
       enabled: !!id,
+      keepPreviousData: true,
+      select: (response) => ({
+        ...response.data,
+        episode: response.data.episode.map((ep: string) => ep.split("/").pop()),
+      }),
     }
   );
 
-  if (isLoading || isRefetching) return <Loader />;
+  if (isLoading) return <Loader />;
 
-  if (!data) return <span>Error</span>;
+  if (!data) return <ErrorMessage />;
 
-  const { image, name, status, species, type, gender, origin, created } =
-    data.data;
+  const {
+    image,
+    name,
+    status,
+    species,
+    type,
+    gender,
+    origin,
+    created,
+    episode,
+  } = data;
 
-  const createdTime = new Date(created).toDateString();
+  const createdTime = format(new Date(created || ""), "MM/dd/yyyy");
 
   return (
     <div className={styles.detailsContainer}>
@@ -50,7 +62,7 @@ const Details: NextPage = () => {
         <span className={styles.origin}>{`Origin: ${origin.name}`}</span>
         <span className={styles.created}>{`Created: ${createdTime}`}</span>
       </div>
-      <div className={styles.episodesContainer}>Episodes</div>
+      <Episodes episodes={episode} />
     </div>
   );
 };

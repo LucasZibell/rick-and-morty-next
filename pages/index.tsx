@@ -5,8 +5,9 @@ import Sidebar from "../components/Sidebar";
 import CharacterCard from "../components/CharacterCard";
 import Paginator from "../components/Paginator";
 import Loader from "../components/Loader";
+import ErrorMessage from "../components/ErrorMessage";
 
-import GET_CHARACTERS from "../constants/queries";
+import { GET_CHARACTERS } from "../constants/queries";
 
 import { getCharacters } from "../services/characters";
 
@@ -39,7 +40,11 @@ const CharacterList: NextPage = () => {
 
   const handlePageChange = (newPage: number) => setPage(newPage);
 
-  if (isLoading || !data) return <Loader />;
+  const goTop = () => window.scrollTo(0, 0);
+
+  if (isLoading) return <Loader />;
+
+  if (!data) return <ErrorMessage />;
 
   return (
     <>
@@ -58,6 +63,9 @@ const CharacterList: NextPage = () => {
           currentPage={currentPage}
           totalPages={data?.data.info.pages || 1}
         />
+        <button onClick={goTop} className={styles.goTopButton} type="button">
+          Go
+        </button>
       </div>
     </>
   );
