@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 
-import GET_CHARACTER_DETAILS from "../../constants/queries";
+import { GET_CHARACTER_DETAILS } from "../../constants/queries";
 
 import { getCharacterDetails } from "../../services/characters";
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import GET_EPISODE_DETAILS from "../constants/queries";
+import { GET_EPISODE_DETAILS } from "../constants/queries";
 
 import { getEpisodeDetails } from "../services/episodes";
 

@@ -7,7 +7,7 @@ import Paginator from "../components/Paginator";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
 
-import GET_CHARACTERS from "../constants/queries";
+import { GET_CHARACTERS } from "../constants/queries";
 
 import { getCharacters } from "../services/characters";
 
