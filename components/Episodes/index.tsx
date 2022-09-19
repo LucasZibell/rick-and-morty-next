@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import format from "date-fns/format";
 
-import { GET_EPISODE_DETAILS } from "../constants/queries";
+import { GET_EPISODE_DETAILS } from "../../constants/queries";
 
-import { getEpisodeDetails } from "../services/episodes";
+import { getEpisodeDetails } from "../../services/episodes";
 
-import styles from "../styles/CharacterDetails.module.scss";
+import styles from "./styles.module.scss";
 
 type Props = {
   episodes: Array<string | undefined>;

@@ -1,4 +1,4 @@
-import styles from "../styles/Paginator.module.scss";
+import styles from "./styles.module.scss";
 
 type Props = {
   onChangePage: (page: number) => void;

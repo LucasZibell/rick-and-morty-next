@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 
-import styles from "../styles/Sidebar.module.scss";
+import styles from "./styles.module.scss";
 
 type Props = {
   onNameChange: (value: string) => void;
