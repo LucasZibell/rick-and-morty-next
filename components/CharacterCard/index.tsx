@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import { Character } from "../types/character";
+import { Character } from "../../types/character";
 
-import styles from "../styles/CharacterCard.module.scss";
+import styles from "./styles.module.scss";
 
 type Props = {
   character: Character;

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import RickAndMortyLogo from "../assets/rick-morty-logo.png";
-import LeftArrow from "../assets/left-arrow.png";
+import RickAndMortyLogo from "../../assets/rick-morty-logo.png";
+import LeftArrow from "../../assets/left-arrow.png";
 
-import styles from "../styles/Navbar.module.scss";
+import styles from "./styles.module.scss";
 
 const Navbar = () => {
   const router = useRouter();

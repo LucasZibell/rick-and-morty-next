@@ -13,7 +13,7 @@ import { getCharacters } from "../services/characters";
 
 import { Character, CharacterFilter } from "../types/character";
 
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/CharacterList.module.scss";
 
 const defaultFilter = {
   name: "",
