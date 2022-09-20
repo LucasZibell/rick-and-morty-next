@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: black;
-  border: 1px solid #2f9331;
+  border: 1px solid var(--forest-green);
   border-radius: 5px;
   width: 200px;
   height: 200px;
@@ -15,11 +15,11 @@
 }
 
 .detailCardButton {
-  background-color: #8bcf21;
-  border: 1px solid #2f9331;
+  background-color: var(--atlantis);
+  border: 1px solid var(--forest-green);
   color: black;
   cursor: pointer;
   font-size: 16px;
   border-radius: 5px;
-  box-shadow: 0px 1px 2px #2f9331;
+  box-shadow: 0px 1px 2px var(--forest-green);
 }

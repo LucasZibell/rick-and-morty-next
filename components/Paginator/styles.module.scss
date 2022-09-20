@@ -16,7 +16,7 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
-  color: #2f9331;
+  color: var(--forest-green);
 
   &:disabled {
     color: black;
@@ -28,7 +28,7 @@
   font-size: 18px;
   color: white;
   background-color: black;
-  border: 1px solid #2f9331;
+  border: 1px solid var(--forest-green);
   border-radius: 5px;
   padding: 0 10px;
 }
