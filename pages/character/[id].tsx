@@ -23,6 +23,7 @@ const Details: NextPage = () => {
     {
       enabled: !!id,
       keepPreviousData: true,
+      retry: 1,
       select: (response) => ({
         ...response.data,
         episode: response.data.episode.map((ep: string) => ep.split("/").pop()),

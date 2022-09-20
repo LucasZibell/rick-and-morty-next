@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
 
-type screenSize = {
-  screenWidth: number;
-};
-
 export default function useIsMobile() {
   const [screenSize, setScreenSize] = useState<number>(1281);
 

@@ -1,10 +1,12 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { slide as Menu } from "react-burger-menu";
+import Image from "next/image";
+
+import WhiteCrossIcon from "../../assets/white_cross.png";
 import useIsMobile from "../../hooks/useIsMobile";
 
 import { FilterReducerState, setSidebarOpen } from "../../redux/sidebarReducer";
-
-import { slide as Menu } from "react-burger-menu";
 
 import styles from "./styles.module.scss";
 
@@ -69,8 +71,17 @@ const Sidebar = ({ onSelectChange, onNameChange }: Props) => {
         <option value="unknown">Unknown</option>
       </select>
       {isMobile && (
-        <button type="button" onClick={handleOnClose}>
-          Close Modal
+        <button
+          type="button"
+          onClick={handleOnClose}
+          className={styles.closeIcon}
+        >
+          <Image
+            src={WhiteCrossIcon}
+            alt="White cross icon"
+            width={20}
+            height={20}
+          />
         </button>
       )}
     </WrapperComponent>

@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
+import Image from "next/image";
 import { useState, ChangeEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Sidebar from "../components/Sidebar";
 import CharacterCard from "../components/CharacterCard";
 import Paginator from "../components/Paginator";
 import Loader from "../components/Loader";
-import ErrorMessage from "../components/ErrorMessage";
 import useIsMobile from "../hooks/useIsMobile";
+import UpArrow from "../assets/up_arrow.png";
 
 import { GET_CHARACTERS } from "../constants/queries";
 
@@ -29,7 +30,7 @@ const CharacterList: NextPage = () => {
   const { data, isLoading } = useQuery(
     [GET_CHARACTERS, filters, currentPage],
     () => getCharacters(filters, currentPage),
-    { keepPreviousData: true }
+    { keepPreviousData: true, retry: 0 }
   );
 
   const hadleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -46,8 +47,6 @@ const CharacterList: NextPage = () => {
 
   if (isLoading) return <Loader />;
 
-  if (!data) return <ErrorMessage />;
-
   return (
     <>
       <Sidebar
@@ -55,23 +54,31 @@ const CharacterList: NextPage = () => {
         onNameChange={hadleNameChange}
       />
       <div className={styles.container}>
-        <div className={styles.characterGrid}>
-          {data?.data.results.map((character: Character) => (
-            <CharacterCard key={character.id} character={character} />
-          ))}
-        </div>
-        <Paginator
-          onChangePage={handlePageChange}
-          currentPage={currentPage}
-          totalPages={data?.data.info.pages || 1}
-        />
-        <button
-          onClick={goTop}
-          className={`${styles.goTopButton} ${isMobile ? "" : "hidden"}`}
-          type="button"
-        >
-          Go
-        </button>
+        {data ? (
+          <>
+            <div className={styles.characterGrid}>
+              {data?.data.results.map((character: Character) => (
+                <CharacterCard key={character.id} character={character} />
+              ))}
+            </div>
+            <Paginator
+              onChangePage={handlePageChange}
+              currentPage={currentPage}
+              totalPages={data?.data.info.pages || 1}
+            />
+            <button
+              onClick={goTop}
+              className={`${styles.goTopButton} ${isMobile ? "" : "hidden"}`}
+              type="button"
+            >
+              <Image src={UpArrow} alt="up arrow icon" width={20} height={20} />
+            </button>
+          </>
+        ) : (
+          <span className={styles.noResults}>
+            No results for the selected filters
+          </span>
+        )}
       </div>
     </>
   );

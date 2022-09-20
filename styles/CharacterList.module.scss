@@ -1,4 +1,5 @@
 .container {
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   padding-top: 50px;
@@ -20,17 +21,22 @@
   font-size: 100;
 }
 
+.noResults {
+  font-size: 36px;
+  color: #2f9331;
+  padding-top: 40vh;
+}
+
 .goTopButton {
   cursor: pointer;
-  background-color: green;
-  color: white;
+  background-color: #2f9331;
   border: none;
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
+  border-radius: 30px;
+  width: 45px;
+  height: 45px;
   position: fixed;
-  bottom: 100px;
-  padding: 5px;
+  right: 20px;
+  bottom: 70px;
 }
 
 @media screen and (max-width: 640px) {

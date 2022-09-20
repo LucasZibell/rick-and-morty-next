@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   justify-content: space-around;
-  background-color: white;
+  background-color: black;
   width: 150px;
   height: 50px;
   position: fixed;
@@ -15,20 +15,20 @@
   font-size: 18px;
   cursor: pointer;
   border: none;
-  background-color: white;
-  color: blue;
+  background-color: transparent;
+  color: #2f9331;
 
   &:disabled {
-    color: rgb(216, 216, 247);
+    color: black;
     cursor: not-allowed;
   }
 }
 
 .pageInput {
   font-size: 18px;
-  color: blue;
-  background-color: white;
-  border: 1px solid blue;
+  color: white;
+  background-color: black;
+  border: 1px solid #2f9331;
   border-radius: 5px;
   padding: 0 10px;
 }
