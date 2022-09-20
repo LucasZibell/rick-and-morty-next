@@ -23,13 +23,13 @@
 
 .noResults {
   font-size: 36px;
-  color: #2f9331;
+  color: var(--forest-green);
   padding-top: 40vh;
 }
 
 .goTopButton {
   cursor: pointer;
-  background-color: #2f9331;
+  background-color: var(--forest-green);
   border: none;
   border-radius: 30px;
   width: 45px;

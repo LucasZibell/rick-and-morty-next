@@ -8,7 +8,7 @@
 
 .episodesContainer {
   @extend .episodesDetailsContainer;
-  border: 1px solid #2f9331;
+  border: 1px solid var(--forest-green);
   border-radius: 5px;
   padding: 10px;
 }
@@ -20,7 +20,7 @@
   padding-bottom: 15px;
   margin-bottom: 15px;
   overflow-y: scroll;
-  border-bottom: 1px solid #2f9331;
+  border-bottom: 1px solid var(--forest-green);
 }
 
 .episodeInfo {
@@ -37,12 +37,12 @@
 
   &:not(:last-child) {
     margin-right: 10px;
-    border-right: 1px solid #2f9331;
+    border-right: 1px solid var(--forest-green);
   }
 }
 
 .selected {
-  color: #2f9331;
+  color: var(--forest-green);
 }
 
 @media screen and (max-width: 640px) {
