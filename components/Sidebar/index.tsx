@@ -1,4 +1,10 @@
 import { useState, useEffect, ChangeEvent } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import useIsMobile from "../../hooks/useIsMobile";
+
+import { FilterReducerState, setSidebarOpen } from "../../redux/sidebarReducer";
+
+import { slide as Menu } from "react-burger-menu";
 
 import styles from "./styles.module.scss";
 
@@ -8,7 +14,15 @@ type Props = {
 };
 
 const Sidebar = ({ onSelectChange, onNameChange }: Props) => {
+  const isMobile = useIsMobile();
+  const dispatch = useDispatch();
+  const isSidebarOpen = useSelector(
+    (state: FilterReducerState) => state.sidebar.isSidebarOpen
+  );
+
   const [typedName, setEvent] = useState<string>("");
+
+  const handleOnClose = () => dispatch(setSidebarOpen(false));
 
   useEffect(() => {
     const debounce = setTimeout(() => onNameChange(typedName), 500);
@@ -16,8 +30,15 @@ const Sidebar = ({ onSelectChange, onNameChange }: Props) => {
     return () => clearTimeout(debounce);
   }, [typedName]);
 
+  const WrapperComponent = isMobile ? Menu : "div";
+
   return (
-    <div className={styles.sidebarContainer}>
+    <WrapperComponent
+      isOpen={isSidebarOpen}
+      className={styles.sidebarContainer}
+      customBurgerIcon={false}
+      onClose={handleOnClose}
+    >
       <input
         id="name"
         onChange={(e) => setEvent(e.target.value)}
@@ -47,7 +68,12 @@ const Sidebar = ({ onSelectChange, onNameChange }: Props) => {
         <option value="genderless">Genderless</option>
         <option value="unknown">Unknown</option>
       </select>
-    </div>
+      {isMobile && (
+        <button type="button" onClick={handleOnClose}>
+          Close Modal
+        </button>
+      )}
+    </WrapperComponent>
   );
 };
 

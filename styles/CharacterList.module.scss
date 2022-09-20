@@ -4,6 +4,7 @@
   padding-top: 50px;
   padding-left: 200px;
   align-items: center;
+  overflow: hidden;
 }
 
 .characterGrid {
@@ -20,6 +21,7 @@
 }
 
 .goTopButton {
+  cursor: pointer;
   background-color: green;
   color: white;
   border: none;
@@ -31,32 +33,23 @@
   padding: 5px;
 }
 
-@media (min-width: 320px) {
+@media screen and (max-width: 640px) {
+  .container {
+    padding-left: 0;
+  }
+
   .characterGrid {
     grid-template-columns: 200px;
   }
 }
-@media (min-width: 481px) {
+
+@media screen and (max-width: 1007px) and (min-width: 641px) {
   .characterGrid {
     grid-template-columns: repeat(2, 200px);
   }
 }
-@media (min-width: 641px) {
-  .characterGrid {
-    grid-template-columns: repeat(3, 200px);
-  }
-}
-@media (min-width: 961px) {
-  .characterGrid {
-    grid-template-columns: repeat(4, 200px);
-  }
-}
-@media (min-width: 1025px) {
-  .characterGrid {
-    grid-template-columns: repeat(4, 200px);
-  }
-}
-@media (min-width: 1281px) {
+
+@media screen and (min-width: 1008px) {
   .characterGrid {
     grid-template-columns: repeat(4, 200px);
   }
