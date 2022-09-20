@@ -17,13 +17,6 @@ const Paginator = ({ onChangePage, currentPage, totalPages }: Props) => {
     onChangePage(currentPage + 1);
   };
 
-  // const selectPage = (e) => {
-  //   const pageNumber = Number(e.target.value);
-  //   if (!pageNumber || pageNumber < 1 || pageNumber > totalPages)
-  //     setTypedPage(currentPage);
-  //   else setTypedPage(pageNumber);
-  // };
-
   const goToFirstPage = () => onChangePage(1);
 
   const goToLastPage = () => onChangePage(totalPages);

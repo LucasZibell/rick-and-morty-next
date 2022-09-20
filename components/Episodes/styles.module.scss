@@ -3,11 +3,12 @@
   flex-direction: column;
   max-width: 620px;
   width: 100%;
+  background-color: black;
 }
 
 .episodesContainer {
   @extend .episodesDetailsContainer;
-  border: 1px solid white;
+  border: 1px solid #2f9331;
   border-radius: 5px;
   padding: 10px;
 }
@@ -17,7 +18,9 @@
   flex-direction: row;
   width: 100%;
   padding-bottom: 15px;
+  margin-bottom: 15px;
   overflow-y: scroll;
+  border-bottom: 1px solid #2f9331;
 }
 
 .episodeInfo {
@@ -25,31 +28,24 @@
 }
 
 .episode {
-  min-width: 90px;
+  min-width: 80px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   padding: 0;
   text-align: start;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+    border-right: 1px solid #2f9331;
+  }
 }
 
 .selected {
-  color: green;
+  color: #2f9331;
 }
 
-@media (min-width: 320px) {
-  .episodeList {
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 481px) {
-  .episodeList {
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 641px) {
+@media screen and (max-width: 640px) {
   .episodeList {
     max-width: 100%;
   }
