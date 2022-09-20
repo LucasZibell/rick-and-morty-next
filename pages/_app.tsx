@@ -1,6 +1,8 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
@@ -16,8 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <QueryClientProvider client={queryClient}>
-        <Navbar />
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Navbar />
+          <Component {...pageProps} />
+        </Provider>
       </QueryClientProvider>
     </>
   );

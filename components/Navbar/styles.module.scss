@@ -1,14 +1,24 @@
 .navbarContainer {
-  display: flex;
   height: 50px;
+  display: flex;
   position: fixed;
   justify-content: center;
-  align-items: center;
   background-color: rgb(75, 75, 75);
   width: 100%;
   z-index: 2;
 }
 
-.logoLink {
+.back {
+  position: fixed;
+  left: 20px;
+  top: 14px;
+}
+
+.hamburger {
+  position: fixed;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
+  left: 20px;
+  top: 14px;
 }

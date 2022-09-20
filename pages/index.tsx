@@ -6,6 +6,7 @@ import CharacterCard from "../components/CharacterCard";
 import Paginator from "../components/Paginator";
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
+import useIsMobile from "../hooks/useIsMobile";
 
 import { GET_CHARACTERS } from "../constants/queries";
 
@@ -22,6 +23,7 @@ const defaultFilter = {
 };
 
 const CharacterList: NextPage = () => {
+  const isMobile = useIsMobile();
   const [filters, setFilters] = useState<CharacterFilter>(defaultFilter);
   const [currentPage, setPage] = useState<number>(1);
   const { data, isLoading } = useQuery(
@@ -63,7 +65,11 @@ const CharacterList: NextPage = () => {
           currentPage={currentPage}
           totalPages={data?.data.info.pages || 1}
         />
-        <button onClick={goTop} className={styles.goTopButton} type="button">
+        <button
+          onClick={goTop}
+          className={`${styles.goTopButton} ${isMobile ? "" : "hidden"}`}
+          type="button"
+        >
           Go
         </button>
       </div>
