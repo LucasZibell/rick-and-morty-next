@@ -6,7 +6,6 @@ import Sidebar from "../components/Sidebar";
 import CharacterCard from "../components/CharacterCard";
 import Paginator from "../components/Paginator";
 import Loader from "../components/Loader";
-import ErrorMessage from "../components/ErrorMessage";
 import useIsMobile from "../hooks/useIsMobile";
 import UpArrow from "../assets/up_arrow.png";
 
